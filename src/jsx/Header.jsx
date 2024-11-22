@@ -6,11 +6,8 @@ import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
-import AdbIcon from '@mui/icons-material/Adb';
-import CustomIcon  from './assets/logo.jpg';   
-import { grey } from '@mui/material/colors';
+import CustomIcon  from '../assets/logo.jpg';   
 
 const pages = ['Products', 'Pricing', 'Blog'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
@@ -35,17 +32,16 @@ function Header() {
   };
 
   return (
-    <AppBar position="static" className='Header' style={{backgroundColor: "#bdbdbd"}}>
+    <AppBar position="static" className='Header' style={{backgroundColor: "#bdbdbd", height:'47px'}}>
       <Container maxWidth="xl">
-        <Toolbar disableGutters>
-            <img src={CustomIcon} alt="Custom Icon" style={{ display: 'flex', marginRight: '8px', height: '40px', borderRadius: '50%' }} />
+        <Toolbar disableGutters sx={{ marginTop:'-10px'}}>
+            <img src={CustomIcon} alt="Custom Icon" style={{ display: 'flex', marginRight: '20px', height: '40px', borderRadius: '50%' }} />
           <Typography variant="h6" noWrap component="a" href="#app-bar-with-responsive-menu"
             sx={{
               mr: 2,
               display: { xs: 'none', md: 'flex' },
               fontFamily: 'monospace',
               fontWeight: 700,
-              letterSpacing: '.3rem',
               color: 'inherit',
               textDecoration: 'none',
             }}
@@ -53,6 +49,8 @@ function Header() {
             LEVEL-UP THE PROJECT 
           </Typography>
 
+
+            
           
         <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ flexGrow: 0 }}>
