@@ -1,10 +1,12 @@
 .background {
     position: relative; 
-    height: 100vh; 
-    width: 100vw; 
+    height: 100%; 
+    width: 244%; 
+    background-attachment: fixed;
+    overflow: hidden;
 }
 
-.Backgroundimages{
+.Backgroundimages {
     height: 40%;
     width: 23%;
     background-color: transparent;
