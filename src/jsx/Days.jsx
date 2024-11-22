@@ -15,18 +15,8 @@ function CustomTabPanel(props) {
       id={`simple-tabpanel-${index}`}
       aria-labelledby={`simple-tab-${index}`}
       {...other}
-      style={{
-        height: '100%',
-        overflowY: 'auto',
-        msOverflowStyle: 'none', // Hide scrollbar in IE and Edge
-        scrollbarWidth: 'none', // Hide scrollbar in Firefox
-      }}
     >
-      {value === index && (
-        <Box sx={{ p: 3, '&::-webkit-scrollbar': { display: 'none' } }}>
-          {children}
-        </Box>
-      )}
+      {value === index && <Box sx={{ p: 3 }}>{children}</Box>}
     </div>
   );
 }
@@ -36,7 +26,6 @@ CustomTabPanel.propTypes = {
   index: PropTypes.number.isRequired,
   value: PropTypes.number.isRequired,
 };
-
 function a11yProps(index) {
   return {
     id: `simple-tab-${index}`,
@@ -52,9 +41,9 @@ export default function Days() {
   };
 
   return (
-    <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', overflow: 'hidden', position: 'static' }}>
-      <Box sx={{ width: '80%', height: '100%', alignSelf: 'center', overflow: 'hidden' }}>
-        <Box sx={{ borderBottom: 1, borderColor: 'divider', display: 'flex', justifyContent: 'center', position: 'sticky', top: 0, zIndex: 1 }}>
+    <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+      <Box sx={{ width: '80%', height: '100%', alignSelf: 'center' }}>
+        <Box sx={{ borderBottom: 1, borderColor: 'divider', display: 'flex', justifyContent: 'center', top: 0, zIndex: 1 }}>
           <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
             <Tab label="Monday" {...a11yProps(0)} />
             <Tab label="Tuesday" {...a11yProps(1)} />
@@ -64,48 +53,19 @@ export default function Days() {
             <Tab label="Saturday" {...a11yProps(5)} />
           </Tabs>
         </Box>
-
-        <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', color: 'black', width: '100%', overflow: 'hidden' }}>
-          <CustomTabPanel value={value} index={0}>
-            <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-              <Timetable time="09:00 - 10:00" />
-              <Timetable time="10:00 - 11:00" />
-              <Timetable time="11:00 - 12:00" />
-              <Timetable time="12:00 - 13:00" />
-              <Timetable time="13:00 - 14:00" />
-              <Timetable time="14:00 - 15:00" />
-              <Timetable time="15:00 - 16:00" />
-              <Timetable time="13:00 - 14:00" />
-              <Timetable time="14:00 - 15:00" />
-              <Timetable time="15:00 - 16:00" />
-            </Box>
-          </CustomTabPanel>
-          <CustomTabPanel value={value} index={1}>
-            <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-              <Timetable />
-            </Box>
-          </CustomTabPanel>
-          <CustomTabPanel value={value} index={2}>
-            <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-              <Timetable />
-            </Box>
-          </CustomTabPanel>
-          <CustomTabPanel value={value} index={3}>
-            <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-              <Timetable />
-            </Box>
-          </CustomTabPanel>
-          <CustomTabPanel value={value} index={4}>
-            <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-              <Timetable />
-            </Box>
-          </CustomTabPanel>
-          <CustomTabPanel value={value} index={5}>
-            <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-              <Timetable />
-            </Box>
-          </CustomTabPanel>
-        </Box>
+  
+        <CustomTabPanel value={value} index={0}>
+          <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', overflow: 'auto', height: 'calc(100vh - 100px)', gap: 5, marginTop:'-20px' }}>
+            <Timetable time="09:00 - 10:00" />
+            <Timetable time="10:00 - 11:00" />
+            <Timetable time="11:00 - 12:00" />
+            <Timetable time="12:00 - 13:00" />
+            <Timetable time="13:00 - 14:00" />
+            <Timetable time="14:00 - 15:00" />
+            <Timetable time="15:00 - 16:00" />
+            <Timetable time="16:00 - 17:00" />
+          </Box>
+        </CustomTabPanel>
       </Box>
     </Box>
   );
